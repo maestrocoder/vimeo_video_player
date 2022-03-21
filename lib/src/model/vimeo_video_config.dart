@@ -357,12 +357,12 @@ class VimeoFileCodecs {
       VimeoFileCodecs(
         hevc: VimeoHevc.fromJson(json["hevc"]),
         av1: List<dynamic>.from(json["av1"].map((x) => x)),
-        avc: List<int>.from(json["avc"].map((x) => x)),
+        avc: List<String>.from(json["avc"].map((x) => x)),
       );
 
   VimeoHevc? hevc;
   List<dynamic>? av1;
-  List<int?>? avc;
+  List<String?>? avc;
 
   Map<String, dynamic> toJson() => {
         "hevc": hevc?.toJson(),
@@ -511,16 +511,16 @@ class VimeoStream {
     this.fps,
   });
 
-  int? profile;
+  String? profile;
   String? quality;
-  int? id;
+  String? id;
   int? fps;
 
   factory VimeoStream.fromJson(Map<String, dynamic> json) => VimeoStream(
-        profile: json["profile"],
-        quality: json["quality"],
-        id: json["id"],
-        fps: json["fps"],
+        profile: "$json['profile']",
+        quality: json['quality'],
+        id: "$json['id']",
+        fps: json['fps'],
       );
 
   Map<String, dynamic> toJson() => {
@@ -571,26 +571,26 @@ class VimeoProgressive {
 
   factory VimeoProgressive.fromJson(Map<String, dynamic> json) =>
       VimeoProgressive(
-        profile: json["profile"],
+        profile: "$json['profile']",
         width: json["width"],
         mime: json["mime"],
         fps: json["fps"],
         url: json["url"],
         cdn: json["cdn"],
         quality: json["quality"],
-        id: json["id"],
+        id: "$json['id']",
         origin: json["origin"],
         height: json["height"],
       );
 
-  int? profile;
+  String? profile;
   int? width;
   String? mime;
   int? fps;
   String? url;
   String? cdn;
   String? quality;
-  int? id;
+  String? id;
   String? origin;
   int? height;
 
